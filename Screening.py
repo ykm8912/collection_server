@@ -26,11 +26,11 @@ class Screening:
 
     def getBasicInfo(self):
         coinList = pd.DataFrame(data=self.upbit.get_market_all())
-        time.sleep(0.1)
+        time.sleep(0.2)
         coinList = coinList[coinList['market'].str.contains('KRW-')]
 
         coinInfo = pd.DataFrame(data=self.upbit.get_ticker(list(coinList['market'].values)))
-        time.sleep(0.1)
+        time.sleep(0.2)
         coinInfo['52_week_ratio'] = coinInfo['trade_price'] / coinInfo['highest_52_week_price'] * 100
         coinInfo['highest_52_week_date'] = [datetime.strptime(x, '%Y-%m-%d') for x in
                                              coinInfo['highest_52_week_date']]
@@ -175,13 +175,13 @@ class Screening:
 
         for mkt in self.targetCoin['market']:
             self.findPumpingSignal(mkt)#펌핑 시그널 찾기
-            time.sleep(0.1)
+            time.sleep(0.2)
 
             self.findCrossSignal(mkt)#데드,골든크로스 시그널 찾기
-            time.sleep(0.1)
+            time.sleep(0.2)
 
             self.findVolSignal(mkt)#변동성 돌파 시그널 찾기
-            time.sleep(0.1)
+            time.sleep(0.2)
 
 if __name__ == "__main__":
     scr = Screening()
