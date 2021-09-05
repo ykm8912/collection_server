@@ -139,7 +139,7 @@ class Screening:
 
                 self.insertCrossSignal(code, "goldencross")
 
-        if price.iloc[-1] < ma5.iloc[-1]:
+        elif price.iloc[-1] < ma5.iloc[-1]:
             if (ma5.iloc[-1] < ma20.iloc[-1]) and (ma5.iloc[-2] > ma20.iloc[-2]):
                 code = temp['market'].iloc[0]
 
