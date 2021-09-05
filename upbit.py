@@ -20,7 +20,6 @@ class Upbitpy():
         self.accessKey = accessKey
         self.secret = secret
         self.markets = self._loadMarkets()
-        self.logger = self.makeLogger()
 
         logging.info('Initializing OK')
     
@@ -39,7 +38,7 @@ class Upbitpy():
         #4 handler instance 생성
         #console = logging.StreamHandler()
         fileHandler = logging.handlers.TimedRotatingFileHandler(
-            filename = 'server',
+            filename = '/home/ec2-user/Server/log/server',
             when = 'midnight',
             interval = 1
         )
@@ -56,8 +55,6 @@ class Upbitpy():
         #7 logger에 handler 추가
         #logger.addHandler(console)
         logger.addHandler(fileHandler)
-
-        return logger
 
     ###############################################################
     # QUOTATION API
