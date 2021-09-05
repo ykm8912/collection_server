@@ -20,7 +20,8 @@ class Upbitpy():
         self.accessKey = accessKey
         self.secret = secret
         self.markets = self._loadMarkets()
-
+        self.makeLogger()
+        
         logging.info('Initializing OK')
     
     def makeLogger(self):
