@@ -103,7 +103,7 @@ class Screening:
         temp = pd.DataFrame(data=self.upbit.getMinutesCandles(unit=30, market=mkt, count=5))  ## 30분봉, 5개를 살펴봄
 
         if temp.iloc[0]['candle_acc_trade_volume'] > 1.5 * temp.iloc[1:]['candle_acc_trade_volume'].mean():     ## 거래량 조건 - 최근 2시간 평균 거래량 1.5배 돌파
-            if temp.iloc[0]['trade_price'] > temp.iloc[1:]['high_price'].max():     ## 가격 조건 - 최근 30분 고점 돌파
+            if temp.iloc[0]['trade_price'] > temp.iloc[1:]['high_price'].max():     ## 가격 조건 - 최근 2시간 고점 돌파
                 if temp.iloc[0]['trade_price'] > temp.iloc[0]['high_price']*0.9:
                     code = temp['market'].iloc[0]
 
